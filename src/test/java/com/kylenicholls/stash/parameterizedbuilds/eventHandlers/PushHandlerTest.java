@@ -32,8 +32,8 @@ public class PushHandlerTest {
     private final String PROJECT_KEY = "projectkey";
     private final String COMMIT = "commithash";
     private final String url = "http://url";
-    private final Server projectServer = new Server("projecturl", null, "projectuser", "projecttoken",
-            false, false);
+    private final Server projectServer = new Server("projecturl", null, "projectuser",
+            "projecttoken", false, false);
     private Settings settings;
     private RefChange refChange;
     private MinimalRef minimalRef;
@@ -78,7 +78,8 @@ public class PushHandlerTest {
     public void testBranchUpdatedAndTriggerIsPush() {
         Job job = jobBuilder.triggers(new String[] { "push" }).build();
         jobs.add(job);
-        PushHandler handler = new PushHandler(settingsService, jenkins, commitService, repository, refChange, url, user);
+        PushHandler handler = new PushHandler(settingsService, jenkins, commitService, repository,
+                refChange, url, user);
         PushHandler spyHandler = spy(handler);
         spyHandler.run();
 
